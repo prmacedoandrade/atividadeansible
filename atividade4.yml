@@ -1,0 +1,14 @@
+---
+- name: atividade4
+  hosts: pwd 
+  tasks:
+  - name: criar arquivo com permissões
+    file:
+      path: /home/arquivo_teste.txt
+      state: touch
+      mode: '0644'
+  - name: criar pasta com permissões
+    file:
+      path: /home/teste
+      state: directory
+      mode: '0755'
