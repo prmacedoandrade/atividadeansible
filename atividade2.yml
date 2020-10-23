@@ -1,0 +1,19 @@
+---
+- name: atividade2-ubuntu
+  hosts: ubuntu
+  tasks:
+  - name: Start a container with a command
+    community.general.docker_container:
+      name: sleepy
+      image: ubuntu:14.04
+      command: ["sleep", "infinity"]
+
+- name: atividade2-webserver
+  hosts: webserver
+  tasks:
+  - name: Start a container
+    community.general.docker_container:
+      name: web
+      image: nginx:latest
+      port:
+      - "8080:80"
