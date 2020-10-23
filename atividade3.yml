@@ -1,0 +1,14 @@
+---
+- name: atividade3
+  hosts: pwd 
+  tasks:
+  - name: copia para remoto
+    copy:
+      src: /home/arquivo_teste1.txt
+      dest: /home/arquivo_teste1.txt
+
+  - name: copia remoto para remoto
+    copy:
+      src: /home/arquivo_teste1.txt
+      dest: /home/arquivo_teste1_copia.txt
+      remote_src: yes
