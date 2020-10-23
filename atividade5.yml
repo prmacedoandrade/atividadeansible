@@ -1,0 +1,28 @@
+---
+- name: atividade5
+  hosts: banco
+  tasks:
+  - name: Postgres
+    community.general.docker_container:
+      name: database
+      image: postgres:latest
+      env:
+        POSTGRES_PASSWORD: "postgres"
+
+- name: atividade5-webserver
+  hosts: nginx
+  tasks:
+  - name: nginx
+    community.general.docker_container:
+      name: web
+      image: nginx:latest
+      ports:
+      - "8081:80"
+
+- name: print
+  hosts: all
+  tasks:
+  - name: imprimir saida
+    command: docker ps
+    register: out
+  - debug: var=out.stdout_lines
