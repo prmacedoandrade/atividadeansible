@@ -1,0 +1,8 @@
+---
+- hosts: pwd 
+  tasks:
+  - name: print
+    command: hostname -i
+    register: out 
+  - debug: var=out.stdout_lines
+  - debug: var=ansible_default_ipv4.address
